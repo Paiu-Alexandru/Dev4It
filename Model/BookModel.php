@@ -31,7 +31,7 @@ class BookModel extends Model
         $sql = "Insert INTO book(id_gender, name, pages_number, price) VALUES (:id_gender, :name, :pages_number, :price)";
         $stmt = $this->db->prepare( $sql);
         $stmt->bindParam(':id_gender', $data['gender']);
-        $stmt->bindParam(':name', $data['name']);
+        $stmt->bindParam(':name', $lower);
         $stmt->bindParam(':pages_number', $data['page_number']);
         $stmt->bindParam(':price', $data['price']);
 
