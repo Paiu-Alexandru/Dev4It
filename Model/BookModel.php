@@ -26,7 +26,7 @@ class BookModel extends Model
 
     public function save($data)
     {
-        $lower = trim(strtolower($data['name']));
+        $lower = trim($data['name']);
 
         $sql = "Insert INTO book(id_gender, name, pages_number, price) VALUES (:id_gender, :name, :pages_number, :price)";
         $stmt = $this->db->prepare( $sql);
