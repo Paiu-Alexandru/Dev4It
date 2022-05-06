@@ -32,11 +32,11 @@ class ValidateBookController{
         $input = $this->input['name'];
         if(empty($input)){
             $this->Error('name','Book Name is Required');
-        }elseif (!preg_match('/^[a-zA-Z0-9,.\s]{2,30}+$/', $input)) {
+        }elseif (!preg_match('/^[a-zA-Z0-9,.\s]{2,100}+$/', $input)) {
             $this->Error('name', 'Book Name must be 2-30 Chars long and Alphanumeric!');
          
         } else {
-            $checkBook = $this->model->getByName(strtolower($input));
+            $checkBook = $this->model->getByName(trim(strtolower($input)));
             if($checkBook) {
                 $this->Error('name','This Book already exists!');
             }

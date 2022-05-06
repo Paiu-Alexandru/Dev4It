@@ -26,14 +26,12 @@ class BookModel extends Model
 
     public function save($data)
     {
-        $lower = strtolower($data['name']);
-        $new_name = str_replace(" ","",$lower);
+        $lower = trim(strtolower($data['name']));
 
-        $sql = "Insert INTO book(id_gender, name, unique_name, pages_number, price) VALUES (:id_gender, :name, :unique_name, :pages_number, :price)";
+        $sql = "Insert INTO book(id_gender, name, pages_number, price) VALUES (:id_gender, :name, :pages_number, :price)";
         $stmt = $this->db->prepare( $sql);
         $stmt->bindParam(':id_gender', $data['gender']);
         $stmt->bindParam(':name', $data['name']);
-        $stmt->bindParam(':unique_name', $new_name);
         $stmt->bindParam(':pages_number', $data['page_number']);
         $stmt->bindParam(':price', $data['price']);
 
