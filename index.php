@@ -63,16 +63,16 @@ $error = $check->error;
             </div>
             <div class="m-3">
                 <select name="payment" class="form-select" id="payment_select">
-                    <option value="default" >Select amount</option>
-                    <option value="free" <?= $check->oldData('payment') === 'free' ? 'selected' : ''; ?>>For free</option>
-                    <option value="other" <?= $check->oldData('payment') === 'other' ? 'selected' : ''; ?><?php echo $selected ?>>Insert amount</option>      
+                    <option value="default" >Select Option</option>
+                    <option value="free" <?= $check->oldData('payment') === 'free' ? 'selected' : ''; ?>>For Free</option>
+                    <option value="other" <?= $check->oldData('payment') === 'other' ? 'selected' : ''; ?><?php echo $selected ?>>Insert Amount</option>      
 
                 </select>
                 <div class="form-text text-danger"><?php echo $error['payment'] ?? '';?></div>
                 <div id="otherBox" class="my-3">
                 <div class="form-text text-success"><?php echo $error['price'] ?? '';?></div>
 
-                    <input class="form-control "  name="price" value="<?php echo $check->oldData('price')?>" type="text" placeholder="Insert price 00.00" disabled id="input"> 
+                    <input class="form-control "  name="price" value="<?php echo $check->oldData('price')?>" type="text" placeholder="Insert price 00.00 RON" disabled id="input"> 
                 </div>
                 
             </div>

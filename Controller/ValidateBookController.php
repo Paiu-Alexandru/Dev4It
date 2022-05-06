@@ -66,29 +66,46 @@ class ValidateBookController{
     }
     public function Price()
     {
+        
         if ($this->input['payment'] === 'default' && !isset($this->input['price'])) {
-            $this->Error('payment','Select a price!');
+            $this->Error('payment','Select between for free and insert amount!!');
         }else {
-
+            if($this->input['payment'] === 'default' && isset($this->input['price'])){
+                $this->Error('payment',"This is the default option! Select between for free and insert amount!");
+                if (!$this->input['price']) {
+                    $this->Error('payment',"You have to select a option!");
+                }
+            }
+            
             if($this->input['payment'] === 'free'){
-                $this->input['price'] = '0.00';
+                $this->input['price'] = '0.00 RON';
+            }else {
+                $this->input['price'] = str_replace("RON","", $this->input['price']);
             }
             if ($this->input['payment'] === 'other') {
-                if ($this->input['price'] == "" ) {
-                    $this->input['price'] = '0.00';
-                }
-                if ($this->input['price'] == '0.00' ) {
+                
+
+                if ( !$this->input['price']) {
                     $this->Error('price',"Insert  amount  or select option for free!!");
+                }else {
+                    if ($this->input['price'] == '0.00' ) {
+                        $this->Error('price',"Insert  amount  or select option for free!!");
+                    }
+                    
+                    $this->input['price'] = str_replace("RON","", $this->input['price']);
+                    $this->input['price'] = str_replace(',', '.' ,$this->input['price']);
+    
+                    if (is_numeric( $this->input['price'])) {
+                    $this->input['price'] = number_format($this->input['price'], 2, '.', '');
+                    $this->input['price'] = $this->input['price'].' RON';
+                    }else {
+                        $this->Error('price',"Please don't cheat !");
+                        
+                    } 
                 }
             }
-            $this->input['price'] = str_replace(',', '.' ,$this->input['price']);
-                if (is_numeric( $this->input['price'])) {
-                $this->input['price'] = number_format($this->input['price'], 2, '.', '');
-                
-                }else {
-                    $this->Error('price',"Please don't cheat !");
-                    $this->input['price'] = '0.00';
-                } 
+           
+            
         }
     }
     public function takeGender()
