@@ -5,4 +5,5 @@
 <p>Add new book is a basic User Interface (UI) that exposes a form where the user can input Book Name, Gendre, Number of pages, Free or Paid, Price in case it is not Free.</p>
 <p>In the Gender section options are loaded dynamically.</p>
 <p>In the price section I created three options to avoid the user accidentally inserting a book for free.</p>
-<p>To download the project click CODE and select download ZIP. After unzipping you can run the local code of course if you already have the database installed</p>
+<p>To download the project click CODE and select download ZIP. After unzipping you can run the local code if you already have the database installed</p>
+<p>Make sure your unziped folder is sored in Root folder(../wamp/www/unziped_folder) of your local server (Wamp, Xamp, Lamp).
